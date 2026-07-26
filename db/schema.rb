@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_07_26_084753) do
+ActiveRecord::Schema[8.1].define(version: 2026_07_26_090932) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -20,6 +20,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_26_084753) do
     t.bigint "instructor_id", null: false
     t.decimal "price", precision: 8, scale: 2, default: "0.0"
     t.boolean "published", default: false, null: false
+    t.string "thumbnail_url"
     t.string "title", null: false
     t.datetime "updated_at", null: false
     t.index ["instructor_id"], name: "index_courses_on_instructor_id"
