@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  enrollment: one
+   lesson: one
+  completed_at: 2026-07-26 15:47:53
+
+two:
+  enrollment: two
+   lesson: two
+  completed_at: 2026-07-26 15:47:53

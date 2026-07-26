@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  student: one
+  course: one
+   enrolled_at: 2026-07-26 15:42:18
+  progress_percent: 1
+
+two:
+  student: two
+  course: two
+   enrolled_at: 2026-07-26 15:42:18
+  progress_percent: 1
