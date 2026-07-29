@@ -3,8 +3,9 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  enum role: { student: 0, instructor: 1 }
+  enum :role, { student: 0, instructor: 1 }
   has_many :courses, foreign_key: :instructor_id, dependent: :destroy
+  has_many :enrollments, foreign_key: :student_id, dependent: :destroy
   has_many :enrolled_courses, through: :enrollments, source: :course
 
   validates :name, presence: true

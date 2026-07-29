@@ -16,12 +16,14 @@ class CoursePolicy < ApplicationPolicy
   def owner?
     user.instructor? && record.instructor_id == user.id
   end
+
   class Scope < ApplicationPolicy::Scope
     # NOTE: Be explicit about which records you allow access to!
     # def resolve
     #   scope.all
     # end
   end
+
   class Scope < Scope
     def resolve
       user.instructor? ? scope.where(instructor: user) : scope.where(published: true)

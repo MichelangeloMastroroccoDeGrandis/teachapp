@@ -1,0 +1,16 @@
+<h1 class="text-2xl font-bold text-grey-900">Instructor Dashboard</h1>
+<p class="mt-1 text-grey-600">Total students across all courses: <%= @total_students %></p>
+
+<table class="mt-6 w-full text-sm border border-grey-200 rounded-lg overflow-hidden">
+    <% @courses.each do |course| %>
+        <tr class="border-b border-grey-100 last:border-0">
+            <td class="px-4 py-3"><%= link_to course.title, course, class: "text-indigo-600 hover:underline" %></td>
+            <td class="px-4 py-3 text-grey-500"><%= course.enrollments.size %> students</td>
+            <td class="px-4 py-3">
+                <span class="rounded-full px-2 py-0.5 text-xs font-medium <%= course.published? ? 'bg-green-100 text-green-700' : 'bg-grey-100 text-grey-600' %>">
+                    <%= course.published? ? "Published" : "Draft" %>
+                </span>
+            </td>
+        </tr>
+    <% end %>
+</table>

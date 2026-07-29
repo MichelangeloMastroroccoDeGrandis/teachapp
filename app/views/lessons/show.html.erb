@@ -1,0 +1,6 @@
+<h1 class="text-2xl font-bold text-grey-900"><%= @lesson.title %></h1>
+<div class="prose mt-4 text-grey-700"><%= simple_format(@lesson.content) %></div>
+
+<% if current_user&.student? %>
+    <%= button_to "Mark complete", complete_course_lesson_path(@course, @lesson), method: :patch, class: "mt-6 rounded-md border border-green-600 px-4 py-2 text-sm font-medium text-green-700 hover:bg-green-50" %>
+<% end %>

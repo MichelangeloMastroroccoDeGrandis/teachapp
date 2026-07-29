@@ -24,7 +24,24 @@
   </head>
 
   <body>
-    <main class="container mx-auto mt-28 px-5 flex">
+    <nav class="bg-white border-b border-grey-200 px-6 py-3 flex items-center justify-between">
+      <%= links_to "LMS", root_path, class: "text-xl font-bold text-indigo-600" %>
+      <% if user_signed_in? %>
+        <div class="flex items-center gap-4">
+          <%= link_to current_user.instructor? ? "Dashboard" : "My Learning", current_user.instructor? ? dashboards_instructor_path : dashboards_student_path, class: "text-sm font-medium text-grey-700 hover:text-indigo-600" %>
+          <%= button_to "Sign out", destroy_user_session_path, method: :delete, class: "text-sm font-medium text-grey-500 hover:text-red-600 bg-transparent border-0 p-0 cursor-pointer" %>
+        </div>
+      <% else %>
+        <%= link_to "Sign in", new_user_session_path, class: "text-sm font-medium text-indigo-600 hover:text-indigo-800" %>
+      <% end %>
+    </nav>
+    <main class="max-w-5xl mx-auto px-6 py-8">
+      <% if notice %>
+        <div class="mb-4 rounded-md bg-green-50 px-4 py-3 text-sm text-green-800"><%= notice %></div>
+      <% end %>
+      <% if alert %>
+        <div class="mb-4 rounded-md bg-red-50 px-4 py-3 text-sm text-red-800"><%= alert %></div>
+      <% end %>
       <%= yield %>
     </main>
   </body>

@@ -1,4 +1,21 @@
-<div>
-  <h1 class="font-bold text-4xl">Courses#show</h1>
-  <p>Find me in app/views/courses/show.html.erb</p>
-</div>
+<h1 class="text-2xl font-bold text-grey-900"><%= @course.title %></h1>
+<p class="mt-2 text-grey-600"><%= @course.description %></p>
+
+<% if current_user&.student? %>
+  <% if @enrollment %>
+    <div class="mt-4 w-full bg-grey-200 rounded-full h-3">
+      <div class="bg-indigo-600 h-3 rounded-full" style="width: <%= @enrollment.progress_percent %>"></div>
+    </div>
+    <p class="mt-1 text-sm text-grey-500"><%= @enrollment.progress_percent %>% complete</p>
+    <% else %>
+    <%= button_to "Enroll", course_enrollment_path(@course), method: :post, class: "mt-4 rounded-md bg-green-600 px-4 py-2 text-sm font-medium text-white hover:bg-green-500"%>
+  <% end %>
+<% end %>
+
+<ol class="mt-6 divide-y divide-grey-200 border border-grey-200 rounded-lg">
+  <% @course.lessons.each do |lesson| %>
+    <li class="px-4 py-3 hover:bg-grey-50">
+      <%= link_to lesson.title, course_lesson_path(@course, lesson), class: "text-grey-800 hover:text-indigo-600" %>
+    </li>
+  <% end %>
+</ol>
