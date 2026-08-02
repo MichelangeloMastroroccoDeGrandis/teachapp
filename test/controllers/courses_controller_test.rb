@@ -1,7 +1,9 @@
 require "test_helper"
 
 class CoursesControllerTest < ActionDispatch::IntegrationTest
-  # test "the truth" do
-  #   assert true
-  # end
+  test "index renders successfully" do
+    get courses_url
+
+    assert_response :success
+  end
 end

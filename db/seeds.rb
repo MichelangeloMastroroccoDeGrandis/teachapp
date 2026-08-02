@@ -7,3 +7,25 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+instructor = User.create!(name: "Alice Instructor", email: "alice@example.com", password: "password", role: :instructor)
+
+students = 5.times.map do |i|
+  User.create!(name: Faker::Name.name, email: "student#{i}@example.com", password: "password", role: :student)
+end
+
+course = Course.create!(title: "Intro to Rails", description: Faker::Lorem.paragraph, instructor: instructor, published: true, price: 49.0)
+
+5.times do |i|
+  course.lessons.create!(title: "Lesson #{i + 1}", content: Faker::Lorem.paragraphs(number: 3).join("\n\n"), position: i + 1)
+end
+
+students.each do |student|
+  enrollment = student.enrollments.create!(course: course, enrolled_at: Time.current)
+  course.lessons.sample(rand(0.5)).each do |lesson|
+    LessonCompletion.create!(enrollment: enrollment, lesson: lesson)
+  end
+  enrollment.recalculate_progress!
+end
+
+puts "Seeded #{User.count} users, #{Course.count} courses, #{Enrollment.count} enrollments."

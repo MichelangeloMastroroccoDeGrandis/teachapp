@@ -1,15 +1,13 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
 one:
   course: one
   title: MyString
-   context: MyText
+  context: MyText
   video_url: MyString
   position: 1
 
 two:
   course: two
   title: MyString
-   context: MyText
+  context: MyText
   video_url: MyString
   position: 1
