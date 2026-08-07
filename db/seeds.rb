@@ -22,7 +22,7 @@ end
 
 students.each do |student|
   enrollment = student.enrollments.create!(course: course, enrolled_at: Time.current)
-  course.lessons.sample(rand(0.5)).each do |lesson|
+  course.lessons.sample(rand(1..3)).each do |lesson|
     LessonCompletion.create!(enrollment: enrollment, lesson: lesson)
   end
   enrollment.recalculate_progress!
