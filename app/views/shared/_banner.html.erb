@@ -1,0 +1,7 @@
+<div class="bg-gray-200 px-6 py-6">
+  <div class="max-w-5xl mx-auto">
+    <h1 class="text-2xl text-center font-bold text-gray-500">
+      <%= content_for?(:page_title) ? yield(:page_title) : controller_name.titleize %>
+    </h1>
+  </div>
+</div>
